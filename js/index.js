@@ -1,13 +1,14 @@
 // Your code goes here
 const title = document.querySelector('h1');
-title.addEventListener('click', () => {
+title.addEventListener('click', e => {
     title.style.color = 'red';
+    e.stopPropagation();
 })
 
 const images = document.querySelectorAll('img');
 images.forEach( element => {
-    element.addEventListener('wheel', () => {
-        element.style.transform = 'rotate(20deg)'
+    element.addEventListener('wheel', e => {
+        element.style.transform = 'rotate(20deg)';
     })
 })
 images.forEach( element => {
@@ -62,6 +63,25 @@ window.addEventListener('focus', () => {
 window.addEventListener('blur', () => {
     body.style.backgroundColor = 'blue'
 })
+
+//stop event propagation
+const header = document.querySelector('.nav-container');
+header.addEventListener('click', e => {
+    header.style.backgroundColor = 'yellow';
+    // e.stopPropagation();
+})
+
+
+//prevent default
+const navItems = document.querySelectorAll('.nav a');
+navItems.forEach( element => {
+    element.addEventListener('click', e => {
+        e.preventDefault();
+    })
+})
+
+const mainNav = document.querySelector('.main-navigation');
+mainNav.style.zIndex = '5';
 
 //events used:
 
